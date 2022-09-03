@@ -1,44 +1,33 @@
-# A Basic Stable IDE config for Neovim
+<p align="center"><img width=200" src="./docs/thumbnail/logo.svg"></p>
 
-> Why does this repo exist?
+<p align="center"><b>gyarados.nvim: My Personal Basic Stable IDE</b></p>
 
-This config attempts to provide a rock solid fully featured starting point for someone new to Neovim, or just tired of maintaining the basic IDE components of their config. 
+<p align="center">
+    <img alt="Editor" src="https://img.shields.io/badge/editor-nvim-019733?style=flat-square&logo=neovim" />
+    <img alt="Git" src="https://img.shields.io/badge/git-lazygit-pink?style=flat-square&logo=git" />
+    <img alt="Workflow Manager" src="https://img.shields.io/badge/multiplexer-tmux-1BB91F?style=flat-square&logo=tmux" />
+  </p>
 
-> What makes it "rock solid"?
+## Screenshots
 
-All of the included plugins are pinned to a version that ensures they are compatible and will not update potentially introducing errors into your config. For every Neovim release I will update this repo along with the community to keep it up to date with the newest versions.
+![startup](docs/screenshot/nvim-dashboard.png)
+![IDE](docs/screenshot/neovim-ide.png)
 
-As I mentioned, this config is meant as a starting point for people new to Neovim who want a familiar IDE experience. The config has a very simple structure that makes it easy to add new plugins. 
+## Motivation
 
-## Install Neovim 0.7
+> Why does this configuration exist?
 
-You can install Neovim with your package manager e.g. brew, apt, pacman etc.. but remember that when you update your packages Neovim may be upgraded to a newer version.
+This config attempts to provide a fully working IDE for work & personal use, as I often break the configuration while trying out new plugins.
 
-If you would like to make sure Neovim only updates when you want it to than I recommend installing from source:
+> Why do you use neovim? Why don't use fully fledge IDE?
 
-```sh
-git clone https://github.com/neovim/neovim.git
-cd neovim
-git checkout release-0.7
-make CMAKE_BUILD_TYPE=Release
-sudo make install
-```
+Actually, I still use fully fledge IDE for work. But, along the time, I like coding more in vim. It makes you enter a place where you only need to think how to write better code (without all of those annoying GUI). There are times where using fully fledge IDE is much more efficient (like starting an empty project), and there are time where using vim is actually make more sense (like when you need to test some part of code & just need to slightly change the code). Again, different tool for different usecase.
 
-## Install the config
+Not gonna lie, when I code for along time every single day, I find it boring (just not enough motivation to write the code). Vim give somewhat give you reward for practicing the art of coding (the more you do it, the faster you are), similar to how you grind a character in a game. It motivate me more, and it make my work become more and more exciting.
 
-Make sure to remove or move your current `nvim` directory
+Also, most of the feature that I use in IDE (formatting, searching, debugging, editting, refactoring, goto definition, peek docs, etc ...) is provided in neovim :D.
 
-```sh
-git clone https://github.com/LunarVim/nvim-basic-ide.git ~/.config/nvim
-```
-
-Run `nvim` and wait for the plugins to be installed 
-
-**NOTE** (You will notice treesitter pulling in a bunch of parsers the next time you open Neovim) 
-
-**NOTE** Checkout this file for some predefined keymaps: [keymaps](https://github.com/LunarVim/nvim-basic-ide/blob/master/lua/user/keymaps.lua)
-
-## Get healthy
+## Prerequisities
 
 Open `nvim` and enter the following:
 
@@ -75,22 +64,21 @@ Next we need to install python support (node is optional)
   npm i -g neovim
   ```
 
-We will also need `ripgrep` for Telescope to work: 
+We will also need `ripgrep` for Telescope to work:
 
 - Ripgrep
 
   ```sh
   sudo apt install ripgrep
   ```
+
 ---
 
 **NOTE** make sure you have [node](https://nodejs.org/en/) installed, I recommend a node manager like [fnm](https://github.com/Schniz/fnm).
 
 ## Fonts
 
-I recommend using the following repo to get a "Nerd Font" (Font that supports icons)
-
-[getnf](https://github.com/ronniedroid/getnf)
+I personally like Jetbrains Mono Nerd Font, but the font is not defined in the neovim setting. You should configure it in your terminal settings.
 
 ## Configuration
 
@@ -110,17 +98,17 @@ Next you will need to add the server to this list: [servers](https://github.com/
 
 ### Formatters and linters
 
-Make sure the formatter or linter is installed and add it to this setup function: [null-ls](https://github.com/LunarVim/nvim-basic-ide/blob/8b9ec3bffe8c8577042baf07c75408532a733fea/lua/user/lsp/null-ls.lua#L13)
+In this neovim configuration, I provided some of the formatters and linters that I personally use:
 
-**NOTE** Some are already setup as examples, remove them if you want
+- Prettier : for javascript and typescript
+- Black : for Python
+- Stylua : for Lua script
+- Goimports : for Golang
+- Shfmt : for shell scripts
 
-### Plugins
+You can configure new formatters and linters easily in `lua/user/lsp`
 
-You can install new plugins here: [plugins](https://github.com/LunarVim/nvim-basic-ide/blob/8b9ec3bffe8c8577042baf07c75408532a733fea/lua/user/plugins.lua#L42)
-
----
-
-## Plugins
+## Plugins List
 
 - [packer](https://github.com/wbthomason/packer.nvim)
 - [plenary](https://github.com/nvim-lua/plenary.nvim)
@@ -138,7 +126,7 @@ You can install new plugins here: [plugins](https://github.com/LunarVim/nvim-bas
 - [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim)
 - [alpha-nvim](https://github.com/goolord/alpha-nvim)
 - [tokyonight.nvim](https://github.com/folke/tokyonight.nvim)
-- [darkplus.nvim](https://github.com/LunarVim/darkplus.nvim)
+- [catppuccin](https://github.com/catppuccin/nvim)
 - [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
 - [cmp-buffer](https://github.com/hrsh7th/cmp-buffer)
 - [cmp-path](https://github.com/hrsh7th/cmp-path)
@@ -154,12 +142,24 @@ You can install new plugins here: [plugins](https://github.com/LunarVim/nvim-bas
 - [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 - [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
+- [git-blame.nvim](https://github.com/f-person/git-blame.nvim)
+- [leap.nvim](https://github.com/ggandor/leap.nvim)
+- [trouble.nvim](https://github.com/folke/trouble.nvim)
 - [nvim-dap](https://github.com/mfussenegger/nvim-dap)
+- [nvim-dap-go](https://github.com/leoluz/nvim-dap-go)
+- [nvim-dap-python](https://github.com/mfussenegger/nvim-dap-python)
+- [telescope-dap](https://github.com/nvim-telescope/telescope-dap.nvim)
 - [nvim-dap-ui](https://github.com/rcarriga/nvim-dap-ui)
 - [DAPInstall.nvim](https://github.com/ravenxrz/DAPInstall.nvim)
-
+- [barbar.nvim](https://github.com/romgrk/barbar.nvim)
+- [refactoring.nvim](https://github.com/ThePrimeagen/refactoring.nvim)
+- [fidget.nvim](https://github.com/j-hui/fidget.nvim)
 ---
 
-> The computing scientist's main challenge is not to get confused by the complexities of his own making. 
+## Thanks to...
 
-\- Edsger W. Dijkstra
+- [LunarVim](https://github.com/LunarVim/nvim-basic-ide)
+
+## ❤️ Support
+
+If you feel that this repo have helped you provide more example on learning software engineering, then it is enough for me! Wanna contribute more? Please ⭐ this repo so other can see it too!
