@@ -17,15 +17,15 @@
 
 > Why does this configuration exist?
 
-This config attempts to provide a fully working IDE for work & personal use, as I often break the configuration while trying out new plugins.
+This config attempts to provide a fully working IDE for work & personal use, as I often break the configuration while trying out new plugins. Feel free to make this config as reference!
 
 > Why do you use neovim? Why don't use fully fledge IDE?
 
-Actually, I still use fully fledge IDE for work. But, along the time, I like coding more in vim. It makes you enter a place where you only need to think how to write better code (without all of those annoying GUI). There are times where using fully fledge IDE is much more efficient (like starting an empty project), and there are time where using vim is actually make more sense (like when you need to test some part of code & just need to slightly change the code). Again, different tool for different usecase.
+Actually, I still use fully fledge IDE for work. But, along the time, I like coding with vim more. It makes you enter a "zen" like state (because it isn't included with all of those annoying GUI). There are times where using fully fledge IDE is much more better (like refactoring or coding alot of boilerplate code), and there are time where using vim is actually make more sense (like when you need to test some part of code & just want to edit code fast). Again, different tool for different usecase.
 
-Not gonna lie, when I code for along time every single day, I find it boring (just not enough motivation to write the code). Vim give somewhat give you reward for practicing the art of coding (the more you do it, the faster you are), similar to how you grind a character in a game. It motivate me more, and it make my work become more and more exciting.
+Not gonna lie, after trying a bunch of code editor, I find it really boring to code on normal IDE. Vim on the other hand, somewhat give you challenge and reward for practicing the art of coding (the more you do it, the faster you are), similar to how you leveling up a character in a game. It motivate me more, and it make my work become more and more exciting.
 
-Also, most of the feature that I use in IDE (formatting, searching, debugging, editting, refactoring, goto definition, peek docs, etc ...) is provided in neovim :D.
+Also, after a lot of research, most of the feature that I "typically" use in IDE (formatting, searching, debugging, editting, refactoring, goto definition, peek docs, etc ...) is provided in neovim :D.
 
 ## Prerequisities
 
