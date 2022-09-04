@@ -86,21 +86,32 @@ keymap("x", "<S-k>", ":move '<-2<CR>gv-gv", opts)
 -- LSP --
 keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
 keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+-- keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
 keymap("n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
 keymap("n", "gr", "<cmd>Trouble lsp_references<CR>", opts)
-keymap("n", "<leader>f", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+-- keymap("n", "<leader>f", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 keymap("n", "<leader>ff", "<cmd>lua vim.lsp.buf.formatting()<cr>", opts)
-keymap("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
-keymap("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
+-- keymap("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
+-- keymap("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
+
+-- LspSaga 
+keymap('n', 'K', '<Cmd>Lspsaga hover_doc<CR>', opts)
+keymap("n", "<leader>a", "<cmd>LSoutlineToggle<CR>", opts)
+keymap("n", "gp", "<cmd>Lspsaga preview_definition<CR>", opts)
+keymap("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", opts)
+keymap("n", "<leader>f", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
+keymap("n", "<leader>f", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts)
+keymap("n", "<leader>la", "<cmd>Lspsaga code_action<CR>", opts)
+keymap("n", "<leader>lr", "<cmd>Lspsaga rename<CR>", opts)
+keymap("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
 
 -- Special command (Formatting)
 vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
 
 -- Plugins --
-
 -- NvimTree
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
+keymap("n", "<leader>rr", "<cmd>NvimTreeRefresh<CR>", opts)
 
 -- Telescope
 keymap("n", ";f", ":Telescope find_files<CR>", opts)
@@ -160,13 +171,6 @@ keymap("n", "<leader>;s", "<cmd>Telescope dap frames<cr>", opts)
 keymap("n", "<leader>lb", "<cmd>Telescope dap list_breakpoints<cr>", opts)
 keymap("n", "<leader>v", "<cmd>Telescope dap variable<sr>", opts)
 
--- Aerial
--- Toggle the aerial window with <leader>a
-keymap("n", "<leader>a", "<cmd>AerialToggle!<CR>", opts)
--- Jump up the tree with '[[' or ']]'
-keymap("n", "[[", "<cmd>AerialPrevUp<CR>", opts)
-keymap("n", "]]", "<cmd>AerialNextUp<CR>", opts)
-
 -- Barbar
 -- Move to previous/next tab
 keymap("n", "<leader>,", "<Cmd>BufferPrevious<CR>", opts)
@@ -181,5 +185,3 @@ keymap("n", "<S-c>", "<Cmd>BufferClose<CR>", opts)
 -- Refactoring
 keymap("v", "<leader>tr", "<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>")
 
--- Tree Explorer
-keymap("n", "<leader>rr", "<cmd>NvimTreeRefresh<CR>", opts)
