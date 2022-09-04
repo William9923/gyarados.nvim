@@ -8,11 +8,11 @@ if not dap_ui_status_ok then
 	return
 end
 
-vim.fn.sign_define("dapbreakpoint", { text = "", texthl = "diagnosticsignerror", linehl = "", numhl = "" })
+vim.fn.sign_define("dapbreakpoint", { text = "📌", texthl = "diagnosticsignerror", linehl = "", numhl = "" })
 dap.defaults.fallback.terminal_win_cmd = "20split new"
-vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "", linehl = "", numhl = "" })
-vim.fn.sign_define("DapBreakpointRejected", { text = "🧘", texthl = "", linehl = "", numhl = "" })
-vim.fn.sign_define("DapStopped", { text = "🏃", texthl = "", linehl = "", numhl = "" })
+vim.fn.sign_define("DapBreakpoint", { text = "📌", texthl = "", linehl = "", numhl = "" })
+vim.fn.sign_define("DapBreakpointRejected", { text = "🚨", texthl = "", linehl = "", numhl = "" })
+vim.fn.sign_define("DapStopped", { text = "🔍️", texthl = "", linehl = "", numhl = "" })
 
 local dap_py_install_status_ok, dap_py = pcall(require, "dap-python")
 if not dap_py_install_status_ok then
