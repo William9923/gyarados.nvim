@@ -18,7 +18,7 @@ nvim_treesitter.setup({
 	autotag = {
 		enable = true,
 	},
-    disable = {"markdown"},
+	disable = { "markdown" },
 	-- A list of parser names, or "all"
 	ensure_installed = {
 		-- Lang
@@ -55,3 +55,8 @@ nvim_treesitter.setup({
 		enable_autocmd = false,
 	},
 })
+
+local status_ok, nvim_ts_autotag = pcall(require, "nvim-ts-autotag")
+if not status_ok then
+	return
+end

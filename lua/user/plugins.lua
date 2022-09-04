@@ -57,10 +57,15 @@ return packer.startup(function(use)
 	use({ "lewis6991/impatient.nvim", commit = "969f2c5c90457612c09cf2a13fee1adaa986d350" })
 	use({ "lukas-reineke/indent-blankline.nvim", commit = "6177a59552e35dfb69e1493fd68194e673dc3ee2" })
 	use({ "goolord/alpha-nvim", commit = "ef27a59e5b4d7b1c2fe1950da3fe5b1c5f3b4c94" })
+	use({ "windwp/nvim-ts-autotag", commit = "fdefe46c6807441460f11f11a167a2baf8e4534b" })
+	
+    -- Plugin Manager
+	use({ "williamboman/mason.nvim", commit = "c6bd87abd0526a01522e27e5b4575e8e18ba0678" })
+	use({ "williamboman/mason-lspconfig.nvim", commit = "328eb7268cb8a6be1764de62d12237f84fcc9ecf" })
 
 	-- Colorschemes
 	use({ "folke/tokyonight.nvim", commit = "8223c970677e4d88c9b6b6d81bda23daf11062bb" })
-	use({ "catppuccin/nvim", as = "catppuccin", commit = "ddae70a80590dc3ee1c2605010abd82c615c1172"})
+	use({ "catppuccin/nvim", as = "catppuccin", commit = "ddae70a80590dc3ee1c2605010abd82c615c1172" })
 
 	-- cmp plugins
 	use({ "hrsh7th/nvim-cmp", commit = "df6734aa018d6feb4d76ba6bda94b1aeac2b378a" }) -- The completion plugin
@@ -76,12 +81,14 @@ return packer.startup(function(use)
 
 	-- LSP
 	use({ "neovim/nvim-lspconfig", commit = "148c99bd09b44cf3605151a06869f6b4d4c24455" }) -- enable LSP
-	use({ "williamboman/nvim-lsp-installer", commit = "e9f13d7acaa60aff91c58b923002228668c8c9e6" }) -- simple to use language server installer
+	-- use({ "williamboman/nvim-lsp-installer", commit = "e9f13d7acaa60aff91c58b923002228668c8c9e6" }) -- simple to use language server installer
 	use({ "jose-elias-alvarez/null-ls.nvim", commit = "ff40739e5be6581899b43385997e39eecdbf9465" }) -- for formatters and linters
 	use({ "RRethy/vim-illuminate", commit = "c82e6d04f27a41d7fdcad9be0bce5bb59fcb78e5" })
+	use({ "glepnir/lspsaga.nvim", commit = "7d3e1b186b84491f23bc728a2aa874150d71f3b6" }) -- simple to use language server installer
 
 	-- Telescope
 	use({ "nvim-telescope/telescope.nvim", commit = "d96eaa914aab6cfc4adccb34af421bdd496468b0" })
+	use({ "nvim-telescope/telescope-file-browser.nvim", commit = "00a814a891de086ed446151bacc559c63682b6ee" })
 
 	-- Treesitter
 	use({
@@ -93,8 +100,8 @@ return packer.startup(function(use)
 		"nvim-treesitter/nvim-treesitter-context",
 		commit = "8e88b67d0dc386d6ba1b3d09c206f19a50bc0625",
 	})
-	
-    -- Git
+
+	-- Git
 	use({ "lewis6991/gitsigns.nvim", commit = "c18e016864c92ecf9775abea1baaa161c28082c3" })
 	use({ "f-person/git-blame.nvim", commit = "1087c3c78ea9f7b7825a256e8fe1ec3af1ad88d0" })
 
@@ -112,7 +119,7 @@ return packer.startup(function(use)
 		end,
 	})
 	use({ "folke/todo-comments.nvim", commit = "98b1ebf198836bdc226c0562b9f906584e6c400e" })
-	use({ "stevearc/aerial.nvim", commit = "86b8341bb8c58ece7e7f3f9b2d0310f4a328ab21" })
+	-- use({ "stevearc/aerial.nvim", commit = "86b8341bb8c58ece7e7f3f9b2d0310f4a328ab21" })
 	use({ "romgrk/barbar.nvim", commit = "4a19df133df71b51e82302db06b31570d7dedd58" })
 
 	-- Additional Debugger Plugins (language specifics)
@@ -129,8 +136,14 @@ return packer.startup(function(use)
 			{ "nvim-treesitter/nvim-treesitter" },
 		},
 	})
-    
-    -- Playthings
+
+	-- Note taking
+	use({
+		"vimwiki/vimwiki",
+		commit = "63af6e72dd3fa840bffb3ebcb8c96970c02e0913",
+	})
+
+	-- Playthings
 	use({
 		"j-hui/fidget.nvim",
 		commit = "492492e7d50452a9ace8346d31f6d6da40439f0e",
@@ -139,7 +152,7 @@ return packer.startup(function(use)
 		end,
 	})
 
-    -- Automatically set up your configuration after cloning packer.nvim
+	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
