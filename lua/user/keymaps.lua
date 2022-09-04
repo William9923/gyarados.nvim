@@ -94,8 +94,8 @@ keymap("n", "<leader>ff", "<cmd>lua vim.lsp.buf.formatting()<cr>", opts)
 -- keymap("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
 -- keymap("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
 
--- LspSaga 
-keymap('n', 'K', '<Cmd>Lspsaga hover_doc<CR>', opts)
+-- LspSaga
+keymap("n", "K", "<Cmd>Lspsaga hover_doc<CR>", opts)
 keymap("n", "<leader>a", "<cmd>LSoutlineToggle<CR>", opts)
 keymap("n", "gp", "<cmd>Lspsaga preview_definition<CR>", opts)
 keymap("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", opts)
@@ -104,6 +104,13 @@ keymap("n", "<leader>f", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts)
 keymap("n", "<leader>la", "<cmd>Lspsaga code_action<CR>", opts)
 keymap("n", "<leader>lr", "<cmd>Lspsaga rename<CR>", opts)
 keymap("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
+keymap("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
+keymap("n", "]E", function()
+	require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })
+end, opts)
+keymap("n", "[E", function()
+	require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR })
+end, opts)
 
 -- Special command (Formatting)
 vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
@@ -184,4 +191,3 @@ keymap("n", "<S-c>", "<Cmd>BufferClose<CR>", opts)
 
 -- Refactoring
 keymap("v", "<leader>tr", "<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>")
-

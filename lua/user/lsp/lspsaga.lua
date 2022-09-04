@@ -3,4 +3,6 @@ if not lspsaga_status_ok then
 	return
 end
 
-lspsaga.init_lsp_saga({})
+lspsaga.init_lsp_saga()
+
+-- Example:
