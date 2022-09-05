@@ -130,14 +130,6 @@ local no_errors, error_msg = pcall(function()
 			path = "/home/william/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
 			url = "https://github.com/saadparwaiz1/cmp_luasnip",
 		},
-		["fidget.nvim"] = {
-			config = {
-				"\27LJ\2\n8\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\vfidget\frequire\0",
-			},
-			loaded = true,
-			path = "/home/william/.local/share/nvim/site/pack/packer/start/fidget.nvim",
-			url = "https://github.com/j-hui/fidget.nvim",
-		},
 		["friendly-snippets"] = {
 			loaded = true,
 			path = "/home/william/.local/share/nvim/site/pack/packer/start/friendly-snippets",
@@ -278,16 +270,6 @@ local no_errors, error_msg = pcall(function()
 			path = "/home/william/.local/share/nvim/site/pack/packer/start/refactoring.nvim",
 			url = "https://github.com/ThePrimeagen/refactoring.nvim",
 		},
-		["telescope-dap.nvim"] = {
-			loaded = true,
-			path = "/home/william/.local/share/nvim/site/pack/packer/start/telescope-dap.nvim",
-			url = "https://github.com/nvim-telescope/telescope-dap.nvim",
-		},
-		["telescope-file-browser.nvim"] = {
-			loaded = true,
-			path = "/home/william/.local/share/nvim/site/pack/packer/start/telescope-file-browser.nvim",
-			url = "https://github.com/nvim-telescope/telescope-file-browser.nvim",
-		},
 		["telescope.nvim"] = {
 			loaded = true,
 			path = "/home/william/.local/share/nvim/site/pack/packer/start/telescope.nvim",
@@ -302,11 +284,6 @@ local no_errors, error_msg = pcall(function()
 			loaded = true,
 			path = "/home/william/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
 			url = "https://github.com/akinsho/toggleterm.nvim",
-		},
-		["tokyonight.nvim"] = {
-			loaded = true,
-			path = "/home/william/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
-			url = "https://github.com/folke/tokyonight.nvim",
 		},
 		["trouble.nvim"] = {
 			config = {
@@ -342,14 +319,6 @@ local no_errors, error_msg = pcall(function()
 		"trouble.nvim"
 	)
 	time([[Config for trouble.nvim]], false)
-	-- Config for: fidget.nvim
-	time([[Config for fidget.nvim]], true)
-	try_loadstring(
-		"\27LJ\2\n8\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\vfidget\frequire\0",
-		"config",
-		"fidget.nvim"
-	)
-	time([[Config for fidget.nvim]], false)
 	if should_profile then
 		save_profiles()
 	end

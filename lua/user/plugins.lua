@@ -58,13 +58,12 @@ return packer.startup(function(use)
 	use({ "lukas-reineke/indent-blankline.nvim", commit = "6177a59552e35dfb69e1493fd68194e673dc3ee2" })
 	use({ "goolord/alpha-nvim", commit = "ef27a59e5b4d7b1c2fe1950da3fe5b1c5f3b4c94" })
 	use({ "windwp/nvim-ts-autotag", commit = "fdefe46c6807441460f11f11a167a2baf8e4534b" })
-	
-    -- Plugin Manager
+
+	-- Plugin Manager
 	use({ "williamboman/mason.nvim", commit = "c6bd87abd0526a01522e27e5b4575e8e18ba0678" })
 	use({ "williamboman/mason-lspconfig.nvim", commit = "328eb7268cb8a6be1764de62d12237f84fcc9ecf" })
 
 	-- Colorschemes
-	use({ "folke/tokyonight.nvim", commit = "8223c970677e4d88c9b6b6d81bda23daf11062bb" })
 	use({ "catppuccin/nvim", as = "catppuccin", commit = "ddae70a80590dc3ee1c2605010abd82c615c1172" })
 
 	-- cmp plugins
@@ -88,14 +87,12 @@ return packer.startup(function(use)
 
 	-- Telescope
 	use({ "nvim-telescope/telescope.nvim", commit = "d96eaa914aab6cfc4adccb34af421bdd496468b0" })
-	use({ "nvim-telescope/telescope-file-browser.nvim", commit = "00a814a891de086ed446151bacc559c63682b6ee" })
 
 	-- Treesitter
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		commit = "518e27589c0463af15463c9d675c65e464efc2fe",
 	})
-
 	use({
 		"nvim-treesitter/nvim-treesitter-context",
 		commit = "8e88b67d0dc386d6ba1b3d09c206f19a50bc0625",
@@ -119,13 +116,11 @@ return packer.startup(function(use)
 		end,
 	})
 	use({ "folke/todo-comments.nvim", commit = "98b1ebf198836bdc226c0562b9f906584e6c400e" })
-	-- use({ "stevearc/aerial.nvim", commit = "86b8341bb8c58ece7e7f3f9b2d0310f4a328ab21" })
 	use({ "romgrk/barbar.nvim", commit = "4a19df133df71b51e82302db06b31570d7dedd58" })
 
 	-- Additional Debugger Plugins (language specifics)
 	use({ "leoluz/nvim-dap-go", commit = "fca8bf90bf017e8ecb3a3fb8c3a3c05b60d1406d" })
 	use({ "mfussenegger/nvim-dap-python", commit = "cc6732ab33a84b3a6b4300fcda5b2f837851b88e" })
-	use({ "nvim-telescope/telescope-dap.nvim", commit = "b4134fff5cbaf3b876e6011212ed60646e56f060" })
 
 	-- Refactoring Plugins
 	use({
@@ -141,15 +136,6 @@ return packer.startup(function(use)
 	use({
 		"vimwiki/vimwiki",
 		commit = "63af6e72dd3fa840bffb3ebcb8c96970c02e0913",
-	})
-
-	-- Playthings
-	use({
-		"j-hui/fidget.nvim",
-		commit = "492492e7d50452a9ace8346d31f6d6da40439f0e",
-		config = function()
-			require("fidget").setup({})
-		end,
 	})
 
 	-- Automatically set up your configuration after cloning packer.nvim
