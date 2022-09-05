@@ -31,6 +31,6 @@ telescope.setup({
 	},
 })
 
-telescope.load_extension("dap")
+-- telescope.load_extension("dap")
 telescope.load_extension("refactoring")
-telescope.load_extension("file_browser")
+-- telescope.load_extension("file_browser")
