@@ -68,11 +68,6 @@ M.on_attach = function(client, _)
 	if status_ok then
 		illuminate.on_attach(client)
 	end
-
-	local status_ok, aerial = pcall(require, "aerial")
-	if status_ok then
-		aerial.on_attach(client)
-	end
 end
 
 return M
