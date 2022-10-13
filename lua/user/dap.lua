@@ -57,9 +57,3 @@ dap.listeners.before.event_exited["dapui_config"] = function()
 	dapui.close()
 end
 
--- Load Vscode Launcher for debugging
-local dap_vscode_status_ok, dap_vscode_config = pcall(require, "dap.ext.vscode")
-if not dap_vscode_status_ok then
-	return
-end
-dap_vscode_config.load_launchjs()
