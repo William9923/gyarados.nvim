@@ -4,5 +4,4 @@ if not lspsaga_status_ok then
 end
 
 lspsaga.init_lsp_saga()
-
 -- Example:
