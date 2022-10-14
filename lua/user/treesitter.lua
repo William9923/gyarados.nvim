@@ -5,13 +5,18 @@
 -- Plugin: nvim-treesitter
 -- url: https://github.com/nvim-treesitter/nvim-treesitter
 
-local status_ok, nvim_treesitter = pcall(require, "nvim-treesitter.configs")
+local status_ok, treesitter = pcall(require, "nvim-treesitter")
+if not status_ok then
+	return
+end
+
+local status_ok, configs = pcall(require, "nvim-treesitter.configs")
 if not status_ok then
 	return
 end
 
 -- See: https://github.com/nvim-treesitter/nvim-treesitter#quickstart
-nvim_treesitter.setup({
+configs.setup({
 	autopairs = {
 		enable = true,
 	},
@@ -38,7 +43,6 @@ nvim_treesitter.setup({
 		-- Bash & script
 		"bash",
 		"lua",
-		"vim",
 		"dockerfile",
 		"fish",
 	},
@@ -57,6 +61,16 @@ nvim_treesitter.setup({
 })
 
 local status_ok, nvim_ts_autotag = pcall(require, "nvim-ts-autotag")
+if not status_ok then
+	return
+end
+
+local status_ok, treesitter = pcall(require, "nvim-treesitter")
+if not status_ok then
+	return
+end
+
+local status_ok, configs = pcall(require, "nvim-treesitter.configs")
 if not status_ok then
 	return
 end

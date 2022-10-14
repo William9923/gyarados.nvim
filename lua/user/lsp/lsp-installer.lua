@@ -23,7 +23,7 @@ if not lspconfig_status_ok then
 end
 
 mason_lsp.setup({
-    ensure_installed = servers,
+	ensure_installed = servers,
 })
 
 local status_ok, lspconfig = pcall(require, "lspconfig")

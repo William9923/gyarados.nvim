@@ -34,7 +34,6 @@ null_ls.setup({
 		formatting.stylua,
 		formatting.goimports,
 		formatting.shfmt,
-		formatting.rust_analyzer,
 	},
 	-- you can reuse a shared lspconfig on_attach callback here
 	-- Format file on save
@@ -52,3 +51,13 @@ null_ls.setup({
 		end
 	end,
 })
+
+local lsp_formatting = function(bufnr)
+	vim.lsp.buf.format({
+		filter = function(client)
+			-- apply whatever logic you want (in this example, we'll only use null-ls)
+			return client.name == "null-ls"
+		end,
+		bufnr = bufnr,
+	})
+end

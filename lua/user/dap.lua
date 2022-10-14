@@ -25,22 +25,47 @@ if not dap_go_install_status_ok then
 end
 
 dapui.setup({
-	sidebar = {
-		elements = {
-			{
-				id = "scopes",
-				size = 0.25, -- Can be float or integer > 1
+	expand_lines = true,
+	icons = { expanded = "", collapsed = "", circular = "" },
+	mappings = {
+		-- Use a table to apply multiple mappings
+		expand = { "<CR>", "<2-LeftMouse>" },
+		open = "o",
+		remove = "d",
+		edit = "e",
+		repl = "r",
+		toggle = "t",
+	},
+	layouts = {
+		{
+			elements = {
+				{ id = "scopes", size = 0.33 },
+				{ id = "breakpoints", size = 0.17 },
+				{ id = "stacks", size = 0.25 },
+				{ id = "watches", size = 0.25 },
 			},
-			{ id = "breakpoints", size = 0.25 },
+			size = 0.33,
+			position = "right",
 		},
-		size = 40,
-		position = "right", -- Can be "left", "right", "top", "bottom"
+		{
+			elements = {
+				{ id = "repl", size = 0.45 },
+				{ id = "console", size = 0.55 },
+			},
+			size = 0.27,
+			position = "bottom",
+		},
 	},
-	tray = {
-		elements = {},
+	floating = {
+		max_height = 0.9,
+		max_width = 0.5, -- Floats will be treated as percentage of your screen.
+		border = vim.g.border_chars, -- Border style. Can be 'single', 'double' or 'rounded'
+		mappings = {
+			close = { "q", "<Esc>" },
+		},
 	},
-})
--- add other configs here
+}) -- add other configs here
+
 dap_py.setup("~/.virtualenvs/debugpy/bin/python")
 dap_py.test_runner = "pytest"
 dap_go.setup()
@@ -56,4 +81,3 @@ end
 dap.listeners.before.event_exited["dapui_config"] = function()
 	dapui.close()
 end
-
