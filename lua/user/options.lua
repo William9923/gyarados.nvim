@@ -38,6 +38,7 @@ vim.opt.fillchars.eob = " " -- show empty lines at the end of a buffer as ` ` {d
 vim.opt.shortmess:append("c") -- hide all the completion messages, e.g. "-- XXX completion (YYY)", "match 1 of 2", "The only match", "Pattern not found"
 vim.opt.whichwrap:append("<,>,[,],h,l") -- keys allowed to move to the previous/next line when the beginning/end of line is reached
 vim.opt.iskeyword:append("-") -- treats words with `-` as single words
+vim.g.loaded_perl_provider = 0
 -- -- Disable builtin plugins
 local disabled_built_ins = {
 	"2html_plugin",
