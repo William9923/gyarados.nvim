@@ -44,6 +44,7 @@ null_ls.setup({
 		formatting.stylua,
 		formatting.goimports,
 		formatting.shfmt,
+		formatting.rustfmt,
 	},
 	-- you can reuse a shared lspconfig on_attach callback here
 	-- Format file on save
