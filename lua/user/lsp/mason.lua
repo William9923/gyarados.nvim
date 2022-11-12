@@ -10,6 +10,7 @@ local servers = {
 	"gopls",
 	"clangd",
 	"rust_analyzer",
+	"taplo",
 }
 
 local settings = {
