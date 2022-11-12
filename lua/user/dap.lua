@@ -8,11 +8,13 @@ if not dap_ui_status_ok then
 	return
 end
 
-vim.fn.sign_define("dapbreakpoint", { text = "📌", texthl = "diagnosticsignerror", linehl = "", numhl = "" })
 dap.defaults.fallback.terminal_win_cmd = "20split new"
-vim.fn.sign_define("DapBreakpoint", { text = "📌", texthl = "", linehl = "", numhl = "" })
-vim.fn.sign_define("DapBreakpointRejected", { text = "🚨", texthl = "", linehl = "", numhl = "" })
-vim.fn.sign_define("DapStopped", { text = "🔍️", texthl = "", linehl = "", numhl = "" })
+vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "", linehl = "", numhl = "" })
+vim.fn.sign_define("DapBreakpointRejected", { text = "", texthl = "", linehl = "", numhl = "" })
+vim.fn.sign_define(
+	"DapStopped",
+	{ text = "", texthl = "DiagnosticSignWarn", linehl = "Visual", numhl = "DiagnosticSignWarn" }
+)
 
 local dap_py_install_status_ok, dap_py = pcall(require, "dap-python")
 if not dap_py_install_status_ok then
@@ -25,7 +27,7 @@ if not dap_go_install_status_ok then
 end
 
 dapui.setup({
-	expand_lines = true,
+	expand_lines = false,
 	icons = { expanded = "", collapsed = "", circular = "" },
 	mappings = {
 		-- Use a table to apply multiple mappings
@@ -40,17 +42,17 @@ dapui.setup({
 		{
 			elements = {
 				{ id = "scopes", size = 0.33 },
+				{ id = "watches", size = 0.30 },
+				{ id = "stacks", size = 0.20 },
 				{ id = "breakpoints", size = 0.17 },
-				{ id = "stacks", size = 0.25 },
-				{ id = "watches", size = 0.25 },
 			},
 			size = 0.33,
 			position = "right",
 		},
 		{
 			elements = {
-				{ id = "repl", size = 0.45 },
-				{ id = "console", size = 0.55 },
+				{ id = "repl", size = 0.40 },
+				{ id = "console", size = 0.60 },
 			},
 			size = 0.27,
 			position = "bottom",
@@ -58,7 +60,7 @@ dapui.setup({
 	},
 	floating = {
 		max_height = 0.9,
-		max_width = 0.5, -- Floats will be treated as percentage of your screen.
+		max_width = 0.6, -- Floats will be treated as percentage of your screen.
 		border = vim.g.border_chars, -- Border style. Can be 'single', 'double' or 'rounded'
 		mappings = {
 			close = { "q", "<Esc>" },

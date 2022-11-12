@@ -30,7 +30,7 @@ dashboard.section.header.val = {
 }
 
 dashboard.section.buttons.val = {
-	dashboard.button("f", " " .. " Find file", ":Telescope find_files <CR>"),
+	dashboard.button("f", " " .. " Find file", ":Telescope find_files <CR>"),
 	dashboard.button("n", " " .. " Take notes", "<cmd>lua _SECOND_BRAIN_TOGGLE()<CR>"),
 	dashboard.button("g", " " .. " Git", "<cmd>lua _LAZYGIT_TOGGLE()<CR>"),
 	dashboard.button("c", " " .. " Config", ":e ~/.config/nvim/init.lua <CR>"),
