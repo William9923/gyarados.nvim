@@ -45,6 +45,7 @@ null_ls.setup({
 		formatting.goimports,
 		formatting.shfmt,
 		formatting.rustfmt,
+		diagnostics.golangci_lint,
 	},
 	-- you can reuse a shared lspconfig on_attach callback here
 	-- Format file on save
