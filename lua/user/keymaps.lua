@@ -68,9 +68,6 @@ keymap("v", "<CR>", "i<CR><esc>", opts)
 -- Insert --
 -- Press kk fast to enter
 keymap("i", "kk", "<ESC>", opts)
-keymap("i", ";;", "<ESC>", opts)
-keymap("i", "jk", "<ESC>", opts)
-keymap("i", "jj", "<ESC>", opts)
 
 -- Visual --
 -- Stay in indent mode
