@@ -24,8 +24,6 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 	end,
 })
 
-vim.cmd("autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif")
-
 vim.api.nvim_create_autocmd({ "VimResized" }, {
 	callback = function()
 		vim.cmd("tabdo wincmd =")
@@ -108,7 +106,6 @@ local function config_winbar_or_statusline()
 end
 
 local events = { "BufEnter", "BufWinEnter", "CursorMoved" }
-
 vim.api.nvim_create_autocmd(events, {
 	pattern = "*",
 	callback = function()
