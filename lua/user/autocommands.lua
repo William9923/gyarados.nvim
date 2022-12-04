@@ -119,3 +119,10 @@ vim.api.nvim_create_autocmd("User", {
 		config_winbar_or_statusline()
 	end,
 })
+
+vim.api.nvim_create_autocmd({ "VimEnter" }, {
+	callback = function()
+		vim.cmd("hi LineNrAbove guifg=yellow ctermfg=yellow")
+		vim.cmd("hi LineNrBelow guifg=cyan ctermfg=cyan")
+	end,
+})
