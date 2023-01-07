@@ -123,6 +123,6 @@ vim.api.nvim_create_autocmd("User", {
 vim.api.nvim_create_autocmd({ "VimEnter" }, {
 	callback = function()
 		vim.cmd("hi LineNrAbove guifg=yellow ctermfg=yellow")
-		vim.cmd("hi LineNrBelow guifg=cyan ctermfg=cyan")
+		vim.cmd("hi LineNrBelow guifg=green ctermfg=green")
 	end,
 })
