@@ -35,6 +35,9 @@ keymap("n", "<S-q>", "<cmd>Bdelete!<CR>", opts)
 -- Better paste
 keymap("v", "p", '"_dP', opts)
 
+keymap("n", ".", ";")
+keymap("v", ".", ";")
+
 -- Fast saving with Ctrl + s
 keymap("n", "<C-s>", ":w<CR>", opts)
 

@@ -15,6 +15,7 @@ local servers = {
 	"jsonls",
 	"yamlls",
 	"gopls",
+	"svelte-language-server",
 }
 
 local lspconfig_status_ok, mason_lsp = pcall(require, "mason-lspconfig")

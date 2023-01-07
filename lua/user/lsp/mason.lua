@@ -11,6 +11,7 @@ local servers = {
 	"clangd",
 	"rust_analyzer",
 	"taplo",
+	"svelte",
 }
 
 local settings = {

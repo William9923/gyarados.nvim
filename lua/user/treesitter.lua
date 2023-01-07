@@ -45,6 +45,8 @@ configs.setup({
 		"lua",
 		"dockerfile",
 		"fish",
+		-- Framework specific
+		"svelte",
 	},
 	-- Install parsers synchronously (only applied to `ensure_installed`)
 	sync_install = false,
