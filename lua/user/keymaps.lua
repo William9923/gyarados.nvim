@@ -62,7 +62,7 @@ keymap("n", "te", ":tabedit<CR>", opts) -- new tab
 -- keymap("n", "<S-Tab>", ":tabprev<Return>", opts) -- prev tab
 -- keymap("n", "<Tab>", ":tabnext<Return>", opts) -- next tab
 
--- Splitting windows
+-- Splitting windows (deprecated => should use tmux navigation...)
 keymap("n", "<leader>ss", ":split<Return><C-w>w", opts) -- split windows (horizontal)
 keymap("n", "<leader>sv", ":vsplit<Return><C-w>w", opts) -- split windows (vertical)
 keymap("n", "<leader>sq", "<C-w>q", opts) -- close split windows
@@ -72,7 +72,7 @@ keymap("n", "<CR>", "i<CR><esc>", opts)
 keymap("v", "<CR>", "i<CR><esc>", opts)
 
 -- Insert --
--- Press kk fast to enter
+-- Press kk fast to esc
 keymap("i", "kk", "<ESC>", opts)
 
 -- Visual --
@@ -148,5 +148,8 @@ keymap("n", "<leader>>", "<Cmd>BufferMoveNext<CR>", opts)
 -- Close buffer
 keymap("n", "<S-c>", "<Cmd>BufferClose<CR>", opts)
 
--- Refactoring
-keymap("v", "<leader>tr", "<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>")
+-- Vim Tmux Navigation
+keymap("n", "<C-h>", "<Cmd> TmuxNavigateLeft<CR>", opts)
+keymap("n", "<C-l>", "<Cmd> TmuxNavigateRight<CR>", opts)
+keymap("n", "<C-j>", "<Cmd> TmuxNavigateDown<CR>", opts)
+keymap("n", "<C-k>", "<Cmd> TmuxNavigateUp<CR>", opts)

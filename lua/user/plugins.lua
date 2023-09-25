@@ -126,6 +126,12 @@ return packer.startup(function(use)
 		commit = "63af6e72dd3fa840bffb3ebcb8c96970c02e0913",
 	})
 
+	-- vim tmux navigation
+	use({
+		"christoomey/vim-tmux-navigator",
+		commit = "7db70e08ea03b3e4d91f63713d76134512e28d7e",
+	})
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
