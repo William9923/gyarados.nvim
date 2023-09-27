@@ -3,6 +3,17 @@
 -- vim.o.background = "dark"
 
 -- Nord
+
+-- Integration with other plugins
+local nord_status_ok, nord = pcall(require, "nord")
+if not nord_status_ok then
+	return
+end
+
+nord.setup({
+	transparent = true,
+})
+
 local colorscheme = "nord"
 vim.o.background = "dark"
 
