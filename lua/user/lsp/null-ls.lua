@@ -28,6 +28,8 @@ null_ls.setup({
 			filetypes = {
 				"javascript",
 				"typescript",
+				"javascriptreact",
+				"typescriptreact",
 				"css",
 				"scss",
 				"html",
@@ -37,7 +39,6 @@ null_ls.setup({
 				"graphql",
 				"md",
 				"txt",
-				"proto",
 			},
 			extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
 		}),
