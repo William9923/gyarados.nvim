@@ -23,7 +23,7 @@ end
 null_ls.setup({
 	debug = false,
 	sources = {
-		-- change the formatter used by the team here...
+		-- NOTE: change the formatter used by the team here...
 		formatting.prettier.with({
 			filetypes = {
 				"javascript",
@@ -42,11 +42,16 @@ null_ls.setup({
 			},
 			extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
 		}),
+
+		-- NOTE: Python
 		formatting.black.with({ extra_args = { "--fast" } }),
+
+		-- NOTE: Lua (neovim configuration related)
 		formatting.stylua,
-		formatting.goimports,
 		formatting.shfmt,
-		formatting.rustfmt,
+
+		-- NOTE: Golang related
+		formatting.goimports, -- NOTE: if team use different golang formatting => change it here...
 		diagnostics.golangci_lint,
 	},
 	-- you can reuse a shared lspconfig on_attach callback here

@@ -119,3 +119,13 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
 		vim.cmd("hi LineNrBelow guifg=cyan ctermfg=cyan")
 	end,
 })
+
+-- CUSTOM autocommand
+-- NOTE: auto formatter for protobuf file
+-- To disable => just comment the autocommand
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+	pattern = "*.proto",
+	callback = function()
+		vim.cmd("silent !clang-format -i " .. vim.fn.expand("%"))
+	end,
+})

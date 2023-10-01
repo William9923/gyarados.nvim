@@ -9,9 +9,8 @@ local servers = {
 	"yamlls",
 	"gopls",
 	"rust_analyzer",
-	"taplo",
-	"svelte",
-	"bufls",
+	"sqlls",
+	-- "sorbet", // NOTE: for ruby language server
 }
 
 local settings = {
