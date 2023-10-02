@@ -16,16 +16,6 @@ vim.fn.sign_define(
 	{ text = "", texthl = "DiagnosticSignWarn", linehl = "Visual", numhl = "DiagnosticSignWarn" }
 )
 
-local dap_py_install_status_ok, dap_py = pcall(require, "dap-python")
-if not dap_py_install_status_ok then
-	return
-end
-
-local dap_go_install_status_ok, dap_go = pcall(require, "dap-go")
-if not dap_go_install_status_ok then
-	return
-end
-
 dapui.setup({
 	expand_lines = false,
 	icons = { expanded = "", collapsed = "", circular = "" },
@@ -68,10 +58,6 @@ dapui.setup({
 	},
 }) -- add other configs here
 
-dap_py.setup("~/.virtualenvs/debugpy/bin/python")
-dap_py.test_runner = "pytest"
-dap_go.setup()
-
 dap.listeners.after.event_initialized["dapui_config"] = function()
 	dapui.open()
 end
@@ -83,3 +69,22 @@ end
 dap.listeners.before.event_exited["dapui_config"] = function()
 	dapui.close()
 end
+
+local require_ok, dap_go = pcall(require, "user.dap." .. "dap-go")
+if not require_ok then
+	return
+end
+dap_go.setup()
+
+-- local dap_py_install_status_ok, dap_py = pcall(require, "dap-python")
+-- if not dap_py_install_status_ok then
+-- 	return
+-- end
+--
+-- local dap_go_install_status_ok, dap_go = pcall(require, "dap-go")
+-- if not dap_go_install_status_ok then
+-- 	return
+-- end
+-- dap_py.setup("~/.virtualenvs/debugpy/bin/python")
+-- dap_py.test_runner = "pytest"
+-- dap_go.setup()

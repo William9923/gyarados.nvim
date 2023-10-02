@@ -23,3 +23,6 @@ telescope.setup({
 		},
 	},
 })
+
+telescope.load_extension("dap")
+telescope.load_extension("file_browser")
