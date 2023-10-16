@@ -137,6 +137,16 @@ local function setup_go_configuration(dap, configs)
 			program = "./${relativeFileDirname}",
 			buildFlags = configs.delve.build_flags,
 		},
+		-- Custom for Gojek application...
+		-- {
+		-- 	name = "Debug MCS application",
+		-- 	type = "go",
+		-- 	request = "launch",
+		-- 	mode = "auto",
+		-- 	program = "${workspaceFolder}/main.go",
+		-- 	buildFlags = configs.delve.build_flags,
+		-- 	args = { "s" },
+		-- },
 	}
 
 	if configs == nil or configs.dap_configurations == nil then

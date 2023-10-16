@@ -9,7 +9,7 @@ local servers = {
 	"yamlls",
 	"gopls",
 	"rust_analyzer",
-	"sqlls",
+	-- "sqlls",
 	-- "sorbet", // NOTE: for ruby language server
 }
 

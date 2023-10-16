@@ -88,3 +88,5 @@ dap_go.setup()
 -- dap_py.setup("~/.virtualenvs/debugpy/bin/python")
 -- dap_py.test_runner = "pytest"
 -- dap_go.setup()
+
+require("dap.ext.vscode").load_launchjs()
