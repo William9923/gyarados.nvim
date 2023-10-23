@@ -10,7 +10,7 @@ local servers = {
 	"gopls",
 	"rust_analyzer",
 	"sqlls",
-	-- "sorbet", // NOTE: for ruby language server
+	"terraformls",
 }
 
 local settings = {
