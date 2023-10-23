@@ -119,8 +119,9 @@ cmp.setup({
 		select = false,
 	},
 	window = {
-		completion = cmp.config.window.bordered(),
-		documentation = cmp.config.window.bordered(),
+		-- completion = cmp.config.window.bordered(),
+		-- documentation = cmp.config.window.bordered(),
+		-- NOTE: after checking, without border is more beautiful...
 	},
 	experimental = {
 		ghost_text = true,
