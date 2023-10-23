@@ -150,6 +150,12 @@ return packer.startup(function(use)
 		commit = "4e2d5efb92062f0b865fe59b200b5ed7793833bf",
 	})
 
+	-- Pretty fold
+	use({
+		"anuvyklack/pretty-fold.nvim",
+		commit = "a7d8b424abe0eedf50116c460fbe6dfd5783b1d5",
+	})
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then

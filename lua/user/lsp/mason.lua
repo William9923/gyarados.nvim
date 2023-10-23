@@ -9,6 +9,7 @@ local servers = {
 	"yamlls",
 	"gopls",
 	"rust_analyzer",
+	"terraformls",
 	-- "sqlls",
 	-- "sorbet", // NOTE: for ruby language server
 }
