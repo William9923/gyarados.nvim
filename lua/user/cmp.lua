@@ -15,6 +15,14 @@ local check_backspace = function()
 	return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
 end
 
+local default_cmp_sources = cmp.config.sources({
+	{ name = "nvim_lsp" },
+	{ name = "nvim_lua" },
+	{ name = "luasnip" },
+	{ name = "buffer" },
+	{ name = "path" },
+})
+
 local kind_icons = {
 	Text = "",
 	Method = "",
@@ -107,13 +115,7 @@ cmp.setup({
 			return vim_item
 		end,
 	},
-	sources = {
-		{ name = "nvim_lsp" },
-		{ name = "nvim_lua" },
-		{ name = "luasnip" },
-		{ name = "buffer" },
-		{ name = "path" },
-	},
+	sources = default_cmp_sources,
 	confirm_opts = {
 		behavior = cmp.ConfirmBehavior.Replace,
 		select = false,
@@ -126,4 +128,23 @@ cmp.setup({
 	experimental = {
 		ghost_text = true,
 	},
+
+	-- Disable during writing comment
+	enabled = function()
+		local context_status_ok, context = pcall(require, "cmp.config.context")
+		if not context_status_ok then
+			return true -- NOTE: by default, we should always apply auto-completion
+		end
+
+		if vim.api.nvim_get_mode().mode == "c" then
+			return true
+		else
+			return not context.in_treesitter_capture("comment") and not context.in_syntax_group("Comment")
+		end
+	end,
 })
+
+-- NOTE: integration with other package => should put it based on priority (lower means lower prio)
+-- Autopair on auto-completion...
+local cmp_autopair_status_ok, cmp_autopairs = pcall(require, "nvim-autopairs.completion.cmp")
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
