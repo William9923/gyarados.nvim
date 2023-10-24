@@ -78,4 +78,5 @@ if not status_ok then
 end
 
 local ts_utils = require("nvim-treesitter.ts_utils")
-ts_utils.get_node_text = vim.treesitter.query.get_node_text
+ts_utils.get_node_text = vim.treesitter.get_node_text
+ts_utils.is_in_node_range = vim.treesitter.is_in_node_range
