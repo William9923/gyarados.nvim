@@ -16,6 +16,7 @@ local check_backspace = function()
 end
 
 local default_cmp_sources = cmp.config.sources({
+	{ name = "nvim_lsp_signature_help" },
 	{ name = "nvim_lsp" },
 	{ name = "nvim_lua" },
 	{ name = "luasnip" },
@@ -50,6 +51,10 @@ local kind_icons = {
 	Operator = "",
 	TypeParameter = "󰉺",
 }
+
+local ELLIPSIS_CHAR = "…"
+local MAX_LABEL_WIDTH = 20
+local MIN_LABEL_WIDTH = 20
 
 cmp.setup({
 	snippet = {
@@ -100,30 +105,62 @@ cmp.setup({
 			"s",
 		}),
 	}),
+	sources = default_cmp_sources,
 	formatting = {
-		fields = { "kind", "abbr", "menu" },
+		fields = { "abbr", "kind", "menu" },
 		format = function(entry, vim_item)
-			vim_item.kind = kind_icons[vim_item.kind]
-			vim_item.menu = ({
-				nvim_lsp = "",
-				nvim_lua = "",
-				luasnip = "",
-				buffer = "",
-				path = "",
-				emoji = "",
-			})[entry.source.name]
-			return vim_item
+			-- Making a fixed width for the auto-completion
+			local label = vim_item.abbr
+			local truncated_label = vim.fn.strcharpart(label, 0, MAX_LABEL_WIDTH)
+			if truncated_label ~= label then
+				vim_item.abbr = truncated_label .. ELLIPSIS_CHAR
+			elseif string.len(label) < MIN_LABEL_WIDTH then
+				local padding = string.rep(" ", MIN_LABEL_WIDTH - string.len(label))
+				vim_item.abbr = label .. padding
+			end
+
+			local lspkind_ok, lspkind = pcall(require, "lspkind")
+			if lspkind_ok then
+				-- Build structure from lspkind...
+				local kind = lspkind.cmp_format({ mode = "symbol_text", maxwidth = 100 })(entry, vim_item)
+				local strings = vim.split(kind.kind, "%s", { trimempty = true })
+				kind.kind = " " .. (strings[1] or "") .. " "
+				local source_name = ({
+					nvim_lsp_signature_help = "[LSP]",
+					nvim_lsp = "[LSP]",
+					nvim_lua = "[Lua]",
+					luasnip = "[LuaSnip]",
+					buffer = "[Buffer]",
+				})[entry.source.name]
+				kind.menu = "    (" .. (strings[2] or "") .. ")" .. " " .. source_name
+				return kind
+			else
+				-- fallback...
+				vim_item.kind = string.format("%s %s", vim_item.kind, kind_icons[vim_item.kind]) -- This concatonates the icons with the name of the item kind
+				vim_item.menu = ({
+					nvim_lsp_signature_help = "[LSP]",
+					nvim_lsp = "[LSP]",
+					nvim_lua = "[Lua]",
+					luasnip = "[LuaSnip]",
+					buffer = "[Buffer]",
+				})[entry.source.name]
+				return vim_item
+			end
 		end,
 	},
-	sources = default_cmp_sources,
 	confirm_opts = {
 		behavior = cmp.ConfirmBehavior.Replace,
 		select = false,
 	},
 	window = {
-		-- completion = cmp.config.window.bordered(),
-		-- documentation = cmp.config.window.bordered(),
 		-- NOTE: after checking, without border is more beautiful...
+		completion = {
+			scrollbar = "║",
+		},
+		documentation = { -- rounded border; thin-style scrollbar
+			border = "rounded",
+			scrollbar = "║",
+		},
 	},
 	experimental = {
 		ghost_text = true,
@@ -136,15 +173,29 @@ cmp.setup({
 			return true -- NOTE: by default, we should always apply auto-completion
 		end
 
+		-- Disable vimwiki filetype
+		if vim.bo.filetype == "vimwiki" then
+			return false
+		end
+
 		if vim.api.nvim_get_mode().mode == "c" then
 			return true
 		else
 			return not context.in_treesitter_capture("comment") and not context.in_syntax_group("Comment")
 		end
 	end,
+
+	-- Open near cursor
+	view = {
+		entries = { name = "custom", selection_order = "near_cursor" },
+	},
 })
 
 -- NOTE: integration with other package => should put it based on priority (lower means lower prio)
 -- Autopair on auto-completion...
 local cmp_autopair_status_ok, cmp_autopairs = pcall(require, "nvim-autopairs.completion.cmp")
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+
+-- Spell suggest
+vim.opt.spell = true
+vim.opt.spelllang = { "en_us" }
