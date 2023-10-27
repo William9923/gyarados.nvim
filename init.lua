@@ -14,7 +14,7 @@ require("user.plugins") -- Import Lua Plugins
 require("user.autocommands")
 require("user.colorscheme")
 require("user.cmp")
-require("user.dap")
+-- require("user.dap")
 require("user.telescope")
 require("user.treesitter")
 require("user.autopairs")
