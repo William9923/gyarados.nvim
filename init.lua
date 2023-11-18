@@ -7,7 +7,6 @@ Inspiration:
 - https://github.com/craftzdog/dotfiles-public
 - https://github.com/LunarVim/Neovim-from-scratch
 --]]
-
 require("user.options")
 require("user.keymaps")
 require("user.plugins") -- Import Lua Plugins

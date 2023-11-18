@@ -4,7 +4,7 @@
 
 -- Plugin: nvim-treesitter
 -- url: https://github.com/nvim-treesitter/nvim-treesitter
-
+vim.treesitter.query.get_node_text = vim.treesitter.get_node_text
 local status_ok, treesitter = pcall(require, "nvim-treesitter")
 if not status_ok then
 	return
@@ -67,16 +67,14 @@ if not status_ok then
 	return
 end
 
-local status_ok, treesitter = pcall(require, "nvim-treesitter")
-if not status_ok then
-	return
-end
-
 local status_ok, configs = pcall(require, "nvim-treesitter.configs")
 if not status_ok then
 	return
 end
 
-local ts_utils = require("nvim-treesitter.ts_utils")
+local status_ok, ts_utils = pcall(require, "nvim-treesitter.ts_utils")
+if not status_ok then
+	return
+end
 ts_utils.get_node_text = vim.treesitter.get_node_text
 ts_utils.is_in_node_range = vim.treesitter.is_in_node_range
