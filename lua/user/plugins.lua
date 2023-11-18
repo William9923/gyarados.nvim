@@ -159,6 +159,11 @@ return packer.startup(function(use)
 		commit = "a7d8b424abe0eedf50116c460fbe6dfd5783b1d5",
 	})
 
+	-- symbol usage
+	use({
+		"Wansmer/symbol-usage.nvim",
+	})
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
